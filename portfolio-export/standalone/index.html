@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T. Mukesh Reddy - AI & ML Engineer Portfolio</title>
+  <meta name="description" content="Personal portfolio of T. Mukesh Reddy, aspiring AI Engineer and First-Year B.Tech CSE (AI & ML) student.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #F0F4F8; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+  </style>
+</head>
+<body class="bg-[#F9FAFB] text-slate-800 antialiased selection:bg-slate-200 selection:text-slate-900 flex flex-col min-h-screen">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="sticky top-0 z-40 bg-[#F9FAFB]/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-8 h-16">
+        <!-- Brand wordmark -->
+        <a href="#home" class="text-base sm:text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 hover:text-slate-700 transition-colors">
+          T. Mukesh Reddy
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <a href="#home" class="hover:text-slate-900 transition-colors whitespace-nowrap">Home</a>
+          <a href="#about" class="hover:text-slate-900 transition-colors whitespace-nowrap">About</a>
+          <a href="#skills" class="hover:text-slate-900 transition-colors whitespace-nowrap">Skills</a>
+          <a href="#projects" class="hover:text-slate-900 transition-colors whitespace-nowrap">Projects</a>
+          <a href="#achievements" class="hover:text-slate-900 transition-colors whitespace-nowrap">Achievements</a>
+          <a href="#contact" class="hover:text-slate-900 transition-colors whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Primary Actions -->
+        <div class="hidden md:flex items-center gap-3 shrink-0">
+          <button onclick="openModal('resume-modal')" class="px-3.5 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200/90 rounded-lg hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-xs whitespace-nowrap">
+            Resume
+          </button>
+          <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-slate-800 rounded-lg hover:bg-slate-900 transition-all shadow-xs whitespace-nowrap">
+            Get in Touch
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex md:hidden items-center gap-2">
+          <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-slate-900 focus:outline-none rounded-lg" aria-label="Toggle Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white/98 px-4 pt-3 pb-5 space-y-2.5 shadow-md">
+      <a href="#home" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">Home</a>
+      <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">About</a>
+      <a href="#skills" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">Skills</a>
+      <a href="#projects" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">Projects</a>
+      <a href="#achievements" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">Achievements</a>
+      <a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-lg">Contact</a>
+      <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+        <button onclick="closeMobileMenu(); openModal('resume-modal')" class="w-full text-center py-2 text-xs font-semibold text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200">
+          View Academic Resume
+        </button>
+        <a href="#contact" onclick="closeMobileMenu()" class="w-full text-center py-2 text-xs font-semibold text-white bg-slate-800 rounded-lg hover:bg-slate-900">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 1. HOME SECTION ================= -->
+  <section id="home" class="relative pt-14 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none -z-10 opacity-70" style="background: radial-gradient(circle at 15% 20%, rgba(224, 231, 255, 0.45) 0%, transparent 40%), radial-gradient(circle at 85% 65%, rgba(220, 238, 242, 0.5) 0%, transparent 45%);"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <!-- Clean unboxed kicker -->
+      <div class="flex items-center gap-2 text-xs font-semibold tracking-wide text-slate-500 uppercase">
+        <span class="text-slate-900 font-bold">Home</span>
+        <span aria-hidden="true">·</span>
+        <span>Undergraduate Portfolio</span>
+      </div>
+
+      <!-- Headline -->
+      <div class="space-y-3">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+          T. Mukesh Reddy
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl font-medium text-slate-700">
+          Aspiring AI Engineer <span class="text-slate-300 font-normal">|</span> B.Tech CSE (AI &amp; ML) Student
+        </p>
+      </div>
+
+      <!-- Intro -->
+      <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl">
+        I am a first-year undergraduate student diving deep into Computer Science foundations, Artificial Intelligence, and Generative AI frameworks. Driven by hands-on curiosity, I actively participate in hackathons and ideathons to build practical software utilities and intelligent tools that bridge algorithmic concepts with everyday usability.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center gap-3.5 pt-2">
+        <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-slate-900 rounded-xl hover:bg-slate-800 transition-all shadow-xs group">
+          View Projects
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-700 bg-white border border-slate-200/90 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all shadow-xs">
+          Contact Me
+        </a>
+        <button onclick="openModal('resume-modal')" class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 rounded-xl transition-colors">
+          <i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i>
+          <span>Resume</span>
+        </button>
+      </div>
+
+      <!-- Direct Social Channels -->
+      <div class="pt-5 border-t border-slate-200/80 flex flex-wrap items-center gap-5 text-sm text-slate-600">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Connect:</span>
+        <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors font-medium">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub</span>
+        </a>
+        <span class="text-slate-300">·</span>
+        <a href="https://www.linkedin.com/in/t-mukesh-reddy-9b8696432/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors font-medium text-sky-700 hover:text-sky-800">
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <span>LinkedIn</span>
+        </a>
+        <span class="text-slate-300">·</span>
+        <a href="mailto:mukeshreddy.t.ai@gmail.com" class="inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span>mukeshreddy.t.ai@gmail.com</span>
+        </a>
+      </div>
+
+      <!-- 4 Foundational Cards -->
+      <div class="mt-14 pt-8 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-slate-800">
+        <div class="bg-white rounded-xl border border-slate-200/90 p-5 shadow-xs space-y-1.5">
+          <div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-600"></i>
+            <span>Academic Track</span>
+          </div>
+          <p class="text-base font-semibold text-slate-900">B.Tech AI &amp; ML</p>
+          <p class="text-xs text-slate-500">First-Year Core Foundations</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200/90 p-5 shadow-xs space-y-1.5">
+          <div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+            <i data-lucide="sparkles" class="w-4 h-4 text-slate-600"></i>
+            <span>Emerging Focus</span>
+          </div>
+          <p class="text-base font-semibold text-slate-900">Generative AI</p>
+          <p class="text-xs text-slate-500">Prompting &amp; LLM Tooling</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200/90 p-5 shadow-xs space-y-1.5">
+          <div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+            <i data-lucide="code-2" class="w-4 h-4 text-slate-600"></i>
+            <span>Core Language</span>
+          </div>
+          <p class="text-base font-semibold text-slate-900">Python &amp; Web</p>
+          <p class="text-xs text-slate-500">Algorithmic Problem Solving</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200/90 p-5 shadow-xs space-y-1.5">
+          <div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+            <i data-lucide="trophy" class="w-4 h-4 text-slate-600"></i>
+            <span>Collaborative Drive</span>
+          </div>
+          <p class="text-base font-semibold text-slate-900">Hackathon Sprints</p>
+          <p class="text-xs text-slate-500">Rapid Idea-to-Code Execution</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. ABOUT SECTION ================= -->
+  <section id="about" class="py-20 md:py-28 bg-[#F0F4F8] border-y border-slate-200/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14 space-y-3">
+        <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+          <span>Academic Background</span>
+          <span aria-hidden="true">·</span>
+          <span>First-Year Undergraduate</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          About
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+          Building rigorous algorithmic logic in Python, learning foundational web architectures, and exploring how modern AI systems can empower practical everyday tools.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200/90 p-7 sm:p-9 shadow-xs space-y-6">
+          <div class="flex items-center gap-3 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center text-sky-700">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Academic Trajectory</h3>
+              <p class="text-xs text-slate-500">First-Year B.Tech in CSE (Artificial Intelligence &amp; Machine Learning)</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+            <p>
+              As a first-year student pursuing a <strong class="text-slate-800 font-semibold">Bachelor of Technology (B.Tech)</strong> specializing in <strong class="text-slate-800 font-semibold">Artificial Intelligence &amp; Machine Learning</strong>, my academic curriculum concentrates on computational mathematics, data structures, and computer science fundamentals.
+            </p>
+            <p>
+              Beyond textbook theory, my philosophy centers on <strong class="text-slate-800 font-semibold">building early and often</strong>. Whether engineering a state machine for banking transactions or writing civic calculation scripts, I enjoy translating requirements into clean, testable logic.
+            </p>
+            <p>
+              My active participation in collegiate hackathons and ideathons has instilled strong collaborative stamina: breaking ambiguous problem statements down, rapidly building working prototypes, and articulating value propositions clearly to evaluation juries.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+            <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Solid Core CS Foundation</div>
+            <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Hands-on Code Prototyping</div>
+            <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Modern Generative AI Tooling</div>
+            <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Collaborative Team Spirit</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-5">
+          <div class="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-700">
+                <i data-lucide="lightbulb" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-base font-bold text-slate-900">Interests &amp; Exploration</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Generative AI applications, intelligent software utilities, modern web architectures, prompt engineering pipelines, and rapid-fire collegiate hackathons.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center text-teal-700">
+                <i data-lucide="target" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-base font-bold text-slate-900">Learning Goals</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Deepening Python and algorithm proficiencies, mastering full-stack web development to create accessible client interfaces, and gaining rigorous hands-on depth in deep learning models and data pipelines.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200/90 p-6 shadow-xs space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center text-amber-800">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-base font-bold text-slate-900">Career Aspirations</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Aspiring to develop into an AI Software Engineer who bridges robust web products with state-of-the-art machine intelligence—crafting high-utility software that solves tangible everyday challenges.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. SKILLS SECTION ================= -->
+  <section id="skills" class="py-20 md:py-28 bg-[#F9FAFB] transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="max-w-2xl space-y-3">
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+            <span>Technical Skills</span>
+            <span aria-hidden="true">·</span>
+            <span>Core Tooling</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+            Skills
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Categorized proficiency across foundational coding languages, artificial intelligence principles, version control, and collaborative problem-solving.
+          </p>
+        </div>
+
+        <!-- Search Input -->
+        <div class="w-full md:w-72 relative">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          <input type="text" id="skills-search" placeholder="Search skill (e.g. Python, Git)..." onkeyup="filterSkills()" class="w-full pl-9 pr-4 py-2 text-xs sm:text-sm bg-white border border-slate-200/90 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-300">
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-xl w-fit max-w-full overflow-x-auto mb-10 border border-slate-200/60">
+        <button onclick="setSkillCategory('all')" id="btn-cat-all" class="skill-cat-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-xs transition-all">All Skills</button>
+        <button onclick="setSkillCategory('programming')" id="btn-cat-programming" class="skill-cat-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">Programming</button>
+        <button onclick="setSkillCategory('technical')" id="btn-cat-technical" class="skill-cat-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">Technical &amp; AI</button>
+        <button onclick="setSkillCategory('soft')" id="btn-cat-soft" class="skill-cat-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">Soft &amp; Practical</button>
+      </div>
+
+      <!-- Skills Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch" id="skills-grid">
+        <!-- Programming -->
+        <div class="skill-category-card bg-white rounded-xl border border-slate-200/90 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6" data-cat="programming">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+              <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center"><i data-lucide="terminal" class="w-4 h-4"></i></div>
+              <h3 class="text-base font-bold text-slate-900">Programming Languages</h3>
+            </div>
+            <p class="text-xs text-slate-500">Core foundational syntax and computational logic</p>
+          </div>
+          <div class="space-y-4 pt-1">
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Python</span><span class="text-xs text-slate-500">Foundational &amp; Scripting</span></div>
+              <p class="text-xs text-slate-600">Data structures, OOP, automated logic scripts</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">JavaScript</span><span class="text-xs text-slate-500">Client-side Basics</span></div>
+              <p class="text-xs text-slate-600">DOM manipulation, async fetch, interactive UI</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">HTML5</span><span class="text-xs text-slate-500">Semantic Markup</span></div>
+              <p class="text-xs text-slate-600">Accessible document structure, form semantics</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">CSS3</span><span class="text-xs text-slate-500">Styling &amp; Flexbox/Grid</span></div>
+              <p class="text-xs text-slate-600">Responsive layouts, modern CSS variables, transitions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical & AI -->
+        <div class="skill-category-card bg-white rounded-xl border border-slate-200/90 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6" data-cat="technical">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+              <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center"><i data-lucide="cpu" class="w-4 h-4"></i></div>
+              <h3 class="text-base font-bold text-slate-900">Technical &amp; Domain Skills</h3>
+            </div>
+            <p class="text-xs text-slate-500">Modern development tools and emerging artificial intelligence paradigms</p>
+          </div>
+          <div class="space-y-4 pt-1">
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Web Development Basics</span><span class="text-xs text-slate-500">Core Stack</span></div>
+              <p class="text-xs text-slate-600">Clean responsive frontends, component structures</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Generative AI Foundations</span><span class="text-xs text-slate-500">Conceptual &amp; Applied</span></div>
+              <p class="text-xs text-slate-600">LLM capabilities, tokenization, AI system architecture</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Prompt Engineering</span><span class="text-xs text-slate-500">Applied</span></div>
+              <p class="text-xs text-slate-600">Few-shot framing, structured output schemas, system instructions</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Git &amp; GitHub</span><span class="text-xs text-slate-500">Version Control</span></div>
+              <p class="text-xs text-slate-600">Branch management, pull requests, repository hygiene</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft & Practical -->
+        <div class="skill-category-card bg-white rounded-xl border border-slate-200/90 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6" data-cat="soft">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+              <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center"><i data-lucide="users" class="w-4 h-4"></i></div>
+              <h3 class="text-base font-bold text-slate-900">Soft &amp; Practical Skills</h3>
+            </div>
+            <p class="text-xs text-slate-500">Methodologies for problem solving, teamwork, and technical communication</p>
+          </div>
+          <div class="space-y-4 pt-1">
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Problem Solving</span><span class="text-xs text-slate-500">Analytical</span></div>
+              <p class="text-xs text-slate-600">Decomposing complex requirements into modular algorithms</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Algorithmic Thinking</span><span class="text-xs text-slate-500">Core Logic</span></div>
+              <p class="text-xs text-slate-600">Step-by-step optimization, condition handling, validation</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Hackathon Ideation &amp; Pitching</span><span class="text-xs text-slate-500">Collaborative</span></div>
+              <p class="text-xs text-slate-600">Rapid concept validation, slide decks, live prototype demo</p>
+            </div>
+            <div class="skill-item p-3 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-1">
+              <div class="flex justify-between"><span class="text-sm font-bold text-slate-800">Team Collaboration</span><span class="text-xs text-slate-500">Interpersonal</span></div>
+              <p class="text-xs text-slate-600">Peer code reviews, sprint coordination, cross-functional synergy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. PROJECTS SECTION ================= -->
+  <section id="projects" class="py-20 md:py-28 bg-[#F0F4F8] border-y border-slate-200/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div class="max-w-2xl space-y-3">
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+            <span>Selected Works</span>
+            <span aria-hidden="true">·</span>
+            <span>Software &amp; Logic Utilities</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+            Projects
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Real functional tools built with Python and web stacks, showcasing computational algorithms, state machine designs, and academic logic. Test any project directly in the browser!
+          </p>
+        </div>
+
+        <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-all shadow-xs w-fit">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>Explore GitHub Repositories</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <!-- Project 1: Voter Eligibility Calculator -->
+        <div class="bg-white rounded-xl border border-slate-200/90 p-7 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+              <div class="flex items-center gap-1.5"><span class="font-mono text-slate-400">01.</span><span>Python / Logic</span></div>
+              <span class="text-[11px] text-slate-400">Interactive Simulation Ready</span>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-800 transition-colors">Voter Eligibility Calculator</h3>
+              <p class="text-xs font-medium text-slate-500 leading-snug">Civic verification logic engine evaluating legal age and regional voting prerequisites.</p>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              A practical utility logic tool built to evaluate citizen voting status based on age, region, and regulatory parameters. Handles boundary conditions, national legal age thresholds, and voter ID status with explanatory outcome reporting.
+            </p>
+            <div class="pt-2">
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 block mb-1.5">Technologies &amp; Architecture</span>
+              <div class="text-xs text-slate-700 font-mono">Python · Web Stack · Algorithm Logic</div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Age threshold validation with automated birthdate calculations</div>
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Regional constituency compliance and electoral ID verification</div>
+            </div>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2.5">
+            <button onclick="openModal('voter-modal')" class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors shadow-xs">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+              <span>Launch Live Demo</span>
+            </button>
+            <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg border border-slate-200" title="View on GitHub">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: ATM Management System -->
+        <div class="bg-white rounded-xl border border-slate-200/90 p-7 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+              <div class="flex items-center gap-1.5"><span class="font-mono text-slate-400">02.</span><span>Python / OOP</span></div>
+              <span class="text-[11px] text-slate-400">Interactive Simulation Ready</span>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-800 transition-colors">ATM Management System</h3>
+              <p class="text-xs font-medium text-slate-500 leading-snug">Reliable transaction state machine modeling core banking operations and balance safeguards.</p>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              A simulation of banking operations covering PIN authentication, balance checks, deposits, and withdrawal workflows. Implements secure balance verification, daily withdrawal limits, and a ledger transaction history.
+            </p>
+            <div class="pt-2">
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 block mb-1.5">Technologies &amp; Architecture</span>
+              <div class="text-xs text-slate-700 font-mono">Python · OOP Architecture · State Machine</div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Secure PIN entry validation with lockout guards</div>
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Atomic balance updates preventing overdraft</div>
+            </div>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2.5">
+            <button onclick="openModal('atm-modal')" class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors shadow-xs">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+              <span>Launch Live Demo</span>
+            </button>
+            <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg border border-slate-200" title="View on GitHub">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Student Grade Calculator -->
+        <div class="bg-white rounded-xl border border-slate-200/90 p-7 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+              <div class="flex items-center gap-1.5"><span class="font-mono text-slate-400">03.</span><span>Web Stack / Stats</span></div>
+              <span class="text-[11px] text-slate-400">Interactive Simulation Ready</span>
+            </div>
+            <div class="space-y-1.5">
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-800 transition-colors">Student Grade Calculator</h3>
+              <p class="text-xs font-medium text-slate-500 leading-snug">Automated academic computation engine determining GPAs, credit weights, and grade tiers.</p>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              An automated academic tool calculating GPAs, marks distributions, and performance tiers for students. Features flexible credit weighting, grade boundaries, and instant visual performance tier classifications.
+            </p>
+            <div class="pt-2">
+              <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 block mb-1.5">Technologies &amp; Architecture</span>
+              <div class="text-xs text-slate-700 font-mono">Python · Web Stack · Statistical Logic</div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Weighted GPA/CGPA computation with dynamic course entry</div>
+              <div class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5"></i> Instant percentile band and academic honor classification</div>
+            </div>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2.5">
+            <button onclick="openModal('grade-modal')" class="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors shadow-xs">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+              <span>Launch Live Demo</span>
+            </button>
+            <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg border border-slate-200" title="View on GitHub">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. ACHIEVEMENTS SECTION ================= -->
+  <section id="achievements" class="py-20 md:py-28 bg-[#F9FAFB] transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14 space-y-3">
+        <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+          <span>Milestones &amp; Growth</span>
+          <span aria-hidden="true">·</span>
+          <span>Sprint Achievements</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          Achievements
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Active involvement in rapid collegiate engineering competitions, coursework tracks, and practical technology explorations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <!-- Hackathons & Ideathons -->
+        <div class="bg-white rounded-xl border border-slate-200/90 p-7 sm:p-8 shadow-xs flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+              <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700">
+                <i data-lucide="trophy" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Hackathons &amp; Ideathons</h3>
+                <p class="text-xs text-slate-500">Rapid Engineering Sprints &amp; Pitches</p>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Competitive collegiate hackathons serve as my proving ground for fast-paced software development. Collaborating closely with team members under 24- to 36-hour sprint windows, I focus on transforming high-level ideas into functional code and crisp technical demos.
+            </p>
+            <div class="space-y-4 pt-2">
+              <div class="p-4 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-slate-800">Rapid Prototyping &amp; MVP Architecture</span>
+                  <span class="text-slate-400 font-mono">2024–Present</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Designed modular logic flows, integrated data storage mockups, and coordinated Git branch merges during time-constrained team sprints.
+                </p>
+              </div>
+              <div class="p-4 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-slate-800">Ideation Pitches &amp; Technical Defense</span>
+                  <span class="text-slate-400 font-mono">Campus Innovation Cell</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Formulated clear problem definitions, architectural diagrams, and user journey stories to pitch technical solutions to faculty juries and industry mentors.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Sprint Focus</span>
+            <span class="font-medium text-slate-800">Agile Prototyping · Team Collaboration</span>
+          </div>
+        </div>
+
+        <!-- Continuous Learning -->
+        <div class="bg-white rounded-xl border border-slate-200/90 p-7 sm:p-8 shadow-xs flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+              <div class="w-9 h-9 rounded-lg bg-sky-50 flex items-center justify-center text-sky-700">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Certifications &amp; Continuous Learning</h3>
+                <p class="text-xs text-slate-500">Structured Academic &amp; Self-Directed Tracks</p>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Complementing formal university degree studies with continuous independent coursework across algorithmic programming, modern web practices, and foundational AI/LLM concepts.
+            </p>
+            <div class="space-y-4 pt-2">
+              <div class="p-4 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-slate-800">Python Mastery &amp; Data Structures</span>
+                  <span class="text-slate-400 font-mono">Active Track</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Deepened understanding of computational complexity, list/dictionary comprehensions, OOP encapsulation, and file/data serialization.
+                </p>
+              </div>
+              <div class="p-4 rounded-lg bg-[#F8FAFC] border border-slate-100 space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-slate-800">Generative AI &amp; Prompt Engineering</span>
+                  <span class="text-slate-400 font-mono">Hands-on Workshops</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Exploring few-shot prompt formulation, structured output elicitation, and integrating language models into responsive software interfaces.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Commitment</span>
+            <span class="font-medium text-slate-800">Continuous Learning · Quality Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. CONTACT SECTION ================= -->
+  <section id="contact" class="py-20 md:py-28 bg-[#F0F4F8] border-t border-slate-200/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14 space-y-3">
+        <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+          <span>Communication</span>
+          <span aria-hidden="true">·</span>
+          <span>Get in Touch</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          Contact &amp; Connect
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Interested in collaborating on a hackathon, discussing artificial intelligence projects, or reviewing academic credentials? Feel free to send a message or connect on professional networks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Email Card -->
+          <div class="bg-white rounded-xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center text-sky-700">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Direct Email</h3>
+                <p class="text-xs text-slate-500">Fastest response channel</p>
+              </div>
+            </div>
+            <div class="p-3 bg-[#F8FAFC] border border-slate-200/80 rounded-lg flex items-center justify-between gap-2">
+              <a href="mailto:mukeshreddy.t.ai@gmail.com" class="font-mono text-xs sm:text-sm text-slate-800 hover:text-sky-700 truncate font-medium">
+                mukeshreddy.t.ai@gmail.com
+              </a>
+              <button onclick="copyEmail()" class="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 rounded-md transition-colors shrink-0" title="Copy email">
+                <i data-lucide="copy" class="w-4 h-4" id="copy-icon"></i>
+              </button>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Open to hackathon invitations, engineering mentorship discussions, and undergraduate research opportunities.
+            </p>
+          </div>
+
+          <!-- Social Links Card -->
+          <div class="bg-white rounded-xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-4">
+            <h3 class="text-base font-bold text-slate-900">Professional Networks</h3>
+            <div class="space-y-3">
+              <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="p-3.5 rounded-lg border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/70 transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-800"><i data-lucide="github" class="w-4 h-4"></i></div>
+                  <div><p class="text-xs sm:text-sm font-bold text-slate-900">GitHub</p><p class="text-xs text-slate-500 font-mono">@MukeshReddyT</p></div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-slate-800 transition-all"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/t-mukesh-reddy-9b8696432/" target="_blank" rel="noreferrer" class="p-3.5 rounded-lg border border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/70 transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center text-sky-700"><i data-lucide="linkedin" class="w-4 h-4"></i></div>
+                  <div><p class="text-xs sm:text-sm font-bold text-slate-900">LinkedIn Network</p><p class="text-xs text-slate-500">T. Mukesh Reddy</p></div>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-slate-800 transition-all"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200/90 p-7 sm:p-9 shadow-xs">
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Send a Note</h3>
+              <p class="text-xs text-slate-500">Leave your details and message below:</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="block text-xs font-semibold text-slate-700">Your Name <span class="text-rose-500">*</span></label>
+                <input type="text" id="contact-name" required placeholder="e.g. Alex" class="w-full px-3 py-2 text-xs sm:text-sm bg-[#F9FAFB] border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400">
+              </div>
+              <div class="space-y-1.5">
+                <label class="block text-xs font-semibold text-slate-700">Your Email <span class="text-rose-500">*</span></label>
+                <input type="email" id="contact-email" required placeholder="name@example.com" class="w-full px-3 py-2 text-xs sm:text-sm bg-[#F9FAFB] border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400">
+              </div>
+            </div>
+            <div class="space-y-1.5">
+              <label class="block text-xs font-semibold text-slate-700">Subject / Discussion Topic</label>
+              <input type="text" id="contact-subject" placeholder="e.g. Hackathon Collaboration" class="w-full px-3 py-2 text-xs sm:text-sm bg-[#F9FAFB] border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400">
+            </div>
+            <div class="space-y-1.5">
+              <label class="block text-xs font-semibold text-slate-700">Message <span class="text-rose-500">*</span></label>
+              <textarea id="contact-message" required rows="4" placeholder="Write your note, questions, or collaboration details..." class="w-full px-3 py-2 text-xs sm:text-sm bg-[#F9FAFB] border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-400 resize-y"></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-slate-900 text-white rounded-lg text-xs sm:text-sm font-semibold hover:bg-slate-800 transition-colors shadow-xs">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Submit Message</span>
+            </button>
+          </form>
+
+          <div id="contact-success" class="hidden py-8 text-center space-y-4">
+            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+              <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">Message Dispatched</h3>
+            <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">Thank you for reaching out! Your note has been received.</p>
+            <button onclick="resetContactForm()" class="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200">Send Another Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-white border-t border-slate-200/90 py-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center sm:text-left">
+          <p class="text-sm font-bold text-slate-900">T. Mukesh Reddy</p>
+          <p class="text-xs text-slate-500">B.Tech CSE (AI &amp; ML) · First-Year Undergraduate Portfolio</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-4 text-slate-500 text-xs">
+            <a href="https://github.com/MukeshReddyT" target="_blank" rel="noreferrer" class="hover:text-slate-900 transition-colors">GitHub</a>
+            <span>·</span>
+            <a href="https://www.linkedin.com/in/t-mukesh-reddy-9b8696432/" target="_blank" rel="noreferrer" class="hover:text-slate-900 transition-colors">LinkedIn</a>
+            <span>·</span>
+            <a href="mailto:mukeshreddy.t.ai@gmail.com" class="hover:text-slate-900 transition-colors">Email</a>
+          </div>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-lg border border-slate-200/80" title="Back to top">
+            <i data-lucide="arrow-up" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <span>&copy; <span id="year-span"></span> T. Mukesh Reddy. All rights reserved.</span>
+        <span>Crafted for academic submissions &amp; engineering showcases</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: VOTER ELIGIBILITY ================= -->
+  <div id="voter-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl max-w-2xl w-full border border-slate-200 shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-[#F9FAFB]">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Voter Eligibility Calculator</h3>
+          <p class="text-xs text-slate-500">Interactive Logic Simulation &amp; Decision Tree</p>
+        </div>
+        <button onclick="closeModal('voter-modal')" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
+              <label class="font-semibold text-slate-700">Citizen Age</label>
+              <span id="voter-age-label" class="font-mono text-slate-900 font-bold">19 years</span>
+            </div>
+            <input type="range" id="voter-age-range" min="10" max="90" value="19" oninput="updateVoterStatus()" class="w-full accent-slate-800">
+          </div>
+          <div class="space-y-1.5">
+            <label class="block text-xs font-semibold text-slate-700">Jurisdiction / State</label>
+            <select id="voter-state" onchange="updateVoterStatus()" class="w-full text-xs sm:text-sm bg-[#F9FAFB] border border-slate-200 rounded-lg p-2 text-slate-800">
+              <option value="Telangana">Telangana</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+            </select>
+          </div>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between">
+            <div><p class="text-xs font-semibold text-slate-800">Citizenship</p><p class="text-[11px] text-slate-500">Legal national</p></div>
+            <input type="checkbox" id="voter-citizen" checked onchange="updateVoterStatus()" class="w-4 h-4 accent-slate-800">
+          </div>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between">
+            <div><p class="text-xs font-semibold text-slate-800">Electoral ID</p><p class="text-[11px] text-slate-500">Voter ID issued</p></div>
+            <input type="checkbox" id="voter-idcard" checked onchange="updateVoterStatus()" class="w-4 h-4 accent-slate-800">
+          </div>
+        </div>
+        <div id="voter-outcome-box" class="p-4 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900">
+          <p id="voter-outcome-title" class="text-sm font-bold">Status: Fully Verified &amp; Eligible</p>
+          <p id="voter-outcome-desc" class="text-xs leading-relaxed opacity-90 mt-1">Applicant meets the statutory age of 18+ and holds valid voter credentials.</p>
+        </div>
+      </div>
+      <div class="px-6 py-3.5 border-t border-slate-100 bg-[#F9FAFB] flex justify-end">
+        <button onclick="closeModal('voter-modal')" class="px-4 py-2 font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-xs">Close Simulation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ATM SIMULATOR ================= -->
+  <div id="atm-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl max-w-2xl w-full border border-slate-200 shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-[#F9FAFB]">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-slate-800 text-white flex items-center justify-center"><i data-lucide="credit-card" class="w-4 h-4"></i></div>
+          <div><h3 class="text-lg font-bold text-slate-900">ATM Management System</h3><p class="text-xs text-slate-500">Python OOP Simulation</p></div>
+        </div>
+        <button onclick="closeModal('atm-modal')" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-5">
+        <!-- Login Screen -->
+        <div id="atm-auth-screen" class="space-y-4 max-w-sm mx-auto text-center py-4">
+          <p class="text-xs text-slate-600">Enter Security PIN to authenticate account:</p>
+          <p class="text-xs bg-slate-100 px-3 py-1.5 rounded-md text-slate-600 font-mono">Test PIN: <strong class="text-slate-900">1234</strong></p>
+          <input type="password" id="atm-pin-input" maxlength="4" placeholder="••••" class="w-full text-center tracking-widest text-xl font-mono py-2 bg-[#F9FAFB] border border-slate-200 rounded-lg">
+          <p id="atm-pin-error" class="hidden text-xs text-rose-600"></p>
+          <button onclick="atmLogin()" class="w-full py-2 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800">Verify PIN &amp; Proceed</button>
+        </div>
+        <!-- Dashboard Screen -->
+        <div id="atm-dash-screen" class="hidden space-y-4">
+          <div class="bg-slate-900 text-white rounded-xl p-5 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-slate-400">Primary Savings Balance</span>
+              <p class="text-2xl font-mono font-bold mt-1 tabular-nums">$<span id="atm-balance-display">1,500</span>.00</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-slate-400">Cardholder</span>
+              <p class="text-xs font-semibold text-white">T. Mukesh Reddy</p>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <span class="text-xs font-semibold text-slate-700 block">Fast Cash</span>
+            <div class="grid grid-cols-4 gap-2">
+              <button onclick="atmWithdraw(20)" class="py-2 bg-slate-50 border border-slate-200 rounded text-xs font-mono font-bold hover:bg-slate-100">$20</button>
+              <button onclick="atmWithdraw(50)" class="py-2 bg-slate-50 border border-slate-200 rounded text-xs font-mono font-bold hover:bg-slate-100">$50</button>
+              <button onclick="atmWithdraw(100)" class="py-2 bg-slate-50 border border-slate-200 rounded text-xs font-mono font-bold hover:bg-slate-100">$100</button>
+              <button onclick="atmWithdraw(200)" class="py-2 bg-slate-50 border border-slate-200 rounded text-xs font-mono font-bold hover:bg-slate-100">$200</button>
+            </div>
+          </div>
+          <div class="space-y-2 pt-2 border-t border-slate-100">
+            <div class="flex gap-2">
+              <input type="number" id="atm-custom-amt" placeholder="Custom amount" class="flex-1 px-3 py-1.5 text-xs bg-[#F9FAFB] border border-slate-200 rounded-lg font-mono">
+              <button onclick="atmCustomWithdraw()" class="px-3 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-semibold">Withdraw</button>
+              <button onclick="atmCustomDeposit()" class="px-3 py-1.5 bg-emerald-700 text-white rounded-lg text-xs font-semibold">Deposit</button>
+            </div>
+            <p id="atm-msg" class="text-xs text-slate-500"></p>
+          </div>
+        </div>
+      </div>
+      <div class="px-6 py-3.5 border-t border-slate-100 bg-[#F9FAFB] flex justify-between items-center text-xs">
+        <button onclick="atmLogout()" id="atm-eject-btn" class="hidden text-rose-600 font-semibold">Eject Card</button>
+        <button onclick="closeModal('atm-modal')" class="px-4 py-2 font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 ml-auto">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: GRADE CALCULATOR ================= -->
+  <div id="grade-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl max-w-2xl w-full border border-slate-200 shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-[#F9FAFB]">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center"><i data-lucide="calculator" class="w-4 h-4"></i></div>
+          <div><h3 class="text-lg font-bold text-slate-900">Student Grade &amp; GPA Calculator</h3><p class="text-xs text-slate-500">10-Point B.Tech Scale Engine</p></div>
+        </div>
+        <button onclick="closeModal('grade-modal')" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-5">
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+            <span class="text-[10px] font-semibold text-slate-500 uppercase">Calculated GPA</span>
+            <p id="grade-gpa" class="text-2xl font-mono font-bold text-slate-900 tabular-nums">9.20</p>
+            <span class="text-[10px] text-slate-400">10.0 Scale</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+            <span class="text-[10px] font-semibold text-slate-500 uppercase">Average Score</span>
+            <p id="grade-avg" class="text-2xl font-mono font-bold text-slate-900 tabular-nums">88.8%</p>
+            <span class="text-[10px] text-slate-400">4 Subjects</span>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center flex flex-col justify-between">
+            <span class="text-[10px] font-semibold text-slate-500 uppercase">Academic Tier</span>
+            <span id="grade-tier" class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 truncate">Distinction</span>
+            <span class="text-[10px] text-slate-400">14 Total Credits</span>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <table class="w-full text-xs text-left">
+            <thead class="bg-[#F8FAFC] border-b border-slate-200 font-semibold text-slate-600">
+              <tr>
+                <th class="py-2 px-3">Subject</th>
+                <th class="py-2 px-3 text-center">Credits</th>
+                <th class="py-2 px-3">Marks (0-100)</th>
+              </tr>
+            </thead>
+            <tbody id="grade-courses-body" class="divide-y divide-slate-100">
+              <!-- populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="px-6 py-3.5 border-t border-slate-100 bg-[#F9FAFB] flex justify-end">
+        <button onclick="closeModal('grade-modal')" class="px-4 py-2 font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-xs">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ACADEMIC RESUME ================= -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+      <div class="flex items-center justify-between px-6 py-3.5 border-b border-slate-200 bg-[#F9FAFB]">
+        <span class="text-xs font-semibold text-slate-700">Academic Resume · T. Mukesh Reddy</span>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print / Save PDF</span>
+          </button>
+          <button onclick="closeModal('resume-modal')" class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+      </div>
+      <div class="p-8 sm:p-10 overflow-y-auto space-y-6 text-slate-800 text-xs">
+        <div class="border-b border-slate-200 pb-5 space-y-1.5">
+          <h1 class="text-2xl font-extrabold text-slate-900">T. Mukesh Reddy</h1>
+          <p class="font-semibold text-slate-700">Aspiring AI Engineer | B.Tech CSE (AI &amp; ML)</p>
+          <p class="text-slate-500 font-mono">mukeshreddy.t.ai@gmail.com · GitHub: MukeshReddyT · LinkedIn: t-mukesh-reddy</p>
+        </div>
+        <div class="space-y-1">
+          <h2 class="font-bold text-slate-400 uppercase tracking-wider">Education</h2>
+          <p class="font-bold text-slate-900 text-sm">Bachelor of Technology (B.Tech) in CSE (AI &amp; ML)</p>
+          <p class="text-slate-600">Focus on Core Computer Science, Computational Mathematics, Python Algorithms, and Machine Learning Systems.</p>
+        </div>
+        <div class="space-y-2">
+          <h2 class="font-bold text-slate-400 uppercase tracking-wider">Technical Skills</h2>
+          <p><strong class="text-slate-800">Programming Languages:</strong> Python, JavaScript, HTML5, CSS3</p>
+          <p><strong class="text-slate-800">Technical &amp; AI:</strong> Web Development Basics, Generative AI Foundations, Prompt Engineering, Git &amp; GitHub</p>
+          <p><strong class="text-slate-800">Soft Skills:</strong> Algorithmic Problem Solving, Hackathon Ideation &amp; Pitching, Teamwork</p>
+        </div>
+        <div class="space-y-2">
+          <h2 class="font-bold text-slate-400 uppercase tracking-wider">Projects</h2>
+          <p><strong class="text-slate-800">Voter Eligibility Calculator:</strong> Civic verification logic engine evaluating legal age and regional voting prerequisites.</p>
+          <p><strong class="text-slate-800">ATM Management System:</strong> Reliable transaction state machine modeling core banking operations and balance safeguards.</p>
+          <p><strong class="text-slate-800">Student Grade Calculator:</strong> Automated academic computation engine determining GPAs, credit weights, and grade tiers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-50 max-w-sm bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-lg border border-slate-800 flex items-center gap-2.5">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+    <span id="toast-text">Notification</span>
+  </div>
+
+  <!-- Interactive JavaScript logic -->
+  <script>
+    document.getElementById('year-span').innerText = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btnMenu = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    btnMenu.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Modal helpers
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 3000);
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText('mukeshreddy.t.ai@gmail.com');
+      showToast('Email copied: mukeshreddy.t.ai@gmail.com');
+    }
+
+    // Skills Filtering & Search
+    let currentSkillCat = 'all';
+    function setSkillCategory(cat) {
+      currentSkillCat = cat;
+      document.querySelectorAll('.skill-cat-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
+        btn.classList.add('text-slate-600');
+      });
+      document.getElementById('btn-cat-' + cat).classList.add('bg-white', 'text-slate-900', 'shadow-xs');
+      document.getElementById('btn-cat-' + cat).classList.remove('text-slate-600');
+      filterSkills();
+    }
+
+    function filterSkills() {
+      const q = document.getElementById('skills-search').value.toLowerCase();
+      const cards = document.querySelectorAll('.skill-category-card');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const matchCat = (currentSkillCat === 'all' || currentSkillCat === cat);
+        const cardText = card.innerText.toLowerCase();
+        const matchSearch = !q || cardText.includes(q);
+        if (matchCat && matchSearch) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Voter Eligibility Logic
+    function updateVoterStatus() {
+      const age = parseInt(document.getElementById('voter-age-range').value);
+      const isCitizen = document.getElementById('voter-citizen').checked;
+      const hasVoterId = document.getElementById('voter-idcard').checked;
+      const state = document.getElementById('voter-state').value;
+      document.getElementById('voter-age-label').innerText = age + ' years';
+
+      const box = document.getElementById('voter-outcome-box');
+      const title = document.getElementById('voter-outcome-title');
+      const desc = document.getElementById('voter-outcome-desc');
+
+      if (!isCitizen) {
+        box.className = 'p-4 rounded-xl border bg-rose-50 border-rose-200 text-rose-900';
+        title.innerText = 'Status: Ineligible (Nationality Requirement)';
+        desc.innerText = 'Only recognized citizens of the nation possess voting franchise under constitutional provisions.';
+      } else if (age < 18) {
+        box.className = 'p-4 rounded-xl border bg-amber-50 border-amber-200 text-amber-900';
+        title.innerText = 'Status: Underage (Requires 18+)';
+        desc.innerText = 'Applicant is ' + age + ' years old. Must wait ' + (18 - age) + ' more year(s) to vote in ' + state + '.';
+      } else if (!hasVoterId) {
+        box.className = 'p-4 rounded-xl border bg-sky-50 border-sky-200 text-sky-900';
+        title.innerText = 'Status: Eligible by Age — Registration Pending';
+        desc.innerText = 'Meets the statutory age of ' + age + ' in ' + state + '. Submit Form 6 to receive your Electoral Photo ID Card (EPIC).';
+      } else {
+        box.className = 'p-4 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900';
+        title.innerText = 'Status: Fully Verified & Eligible';
+        desc.innerText = 'Applicant is ' + age + ' years old, citizen, and holds valid registration in ' + state + '.';
+      }
+    }
+
+    // ATM Simulation Logic
+    let atmBalance = 1500;
+    function atmLogin() {
+      const pin = document.getElementById('atm-pin-input').value;
+      if (pin === '1234') {
+        document.getElementById('atm-auth-screen').classList.add('hidden');
+        document.getElementById('atm-dash-screen').classList.remove('hidden');
+        document.getElementById('atm-eject-btn').classList.remove('hidden');
+        document.getElementById('atm-pin-error').classList.add('hidden');
+      } else {
+        const err = document.getElementById('atm-pin-error');
+        err.innerText = 'Incorrect PIN. Test PIN is 1234.';
+        err.classList.remove('hidden');
+      }
+    }
+    function atmLogout() {
+      document.getElementById('atm-auth-screen').classList.remove('hidden');
+      document.getElementById('atm-dash-screen').classList.add('hidden');
+      document.getElementById('atm-eject-btn').classList.add('hidden');
+      document.getElementById('atm-pin-input').value = '';
+      document.getElementById('atm-msg').innerText = '';
+    }
+    function atmWithdraw(amt) {
+      if (amt > atmBalance) {
+        document.getElementById('atm-msg').innerText = 'Insufficient funds for $' + amt;
+        document.getElementById('atm-msg').className = 'text-xs text-rose-600';
+        return;
+      }
+      atmBalance -= amt;
+      document.getElementById('atm-balance-display').innerText = atmBalance.toLocaleString();
+      document.getElementById('atm-msg').innerText = 'Successfully withdrew $' + amt;
+      document.getElementById('atm-msg').className = 'text-xs text-emerald-600';
+    }
+    function atmCustomWithdraw() {
+      const amt = parseInt(document.getElementById('atm-custom-amt').value);
+      if (amt && amt > 0) {
+        atmWithdraw(amt);
+        document.getElementById('atm-custom-amt').value = '';
+      }
+    }
+    function atmCustomDeposit() {
+      const amt = parseInt(document.getElementById('atm-custom-amt').value);
+      if (amt && amt > 0) {
+        atmBalance += amt;
+        document.getElementById('atm-balance-display').innerText = atmBalance.toLocaleString();
+        document.getElementById('atm-msg').innerText = 'Successfully deposited $' + amt;
+        document.getElementById('atm-msg').className = 'text-xs text-emerald-600';
+        document.getElementById('atm-custom-amt').value = '';
+      }
+    }
+
+    // Grade Calculator Logic
+    const courses = [
+      { name: 'Python Programming', credits: 4, marks: 92 },
+      { name: 'AI Foundations', credits: 4, marks: 88 },
+      { name: 'Discrete Mathematics', credits: 3, marks: 85 },
+      { name: 'Web Technologies', credits: 3, marks: 90 },
+    ];
+    function renderCourses() {
+      const tbody = document.getElementById('grade-courses-body');
+      tbody.innerHTML = '';
+      courses.forEach((c, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="py-2 px-3 font-medium text-slate-800">${c.name}</td>
+          <td class="py-2 px-3 text-center font-mono">${c.credits}</td>
+          <td class="py-2 px-3">
+            <input type="number" min="0" max="100" value="${c.marks}" onchange="updateCourseMark(${idx}, this.value)" class="w-20 px-2 py-0.5 border border-slate-200 rounded font-mono text-xs">
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      calcGPA();
+    }
+    function updateCourseMark(idx, val) {
+      courses[idx].marks = Math.max(0, Math.min(100, parseInt(val) || 0));
+      calcGPA();
+    }
+    function calcGPA() {
+      let totalPts = 0;
+      let totalCredits = 0;
+      let totalMarks = 0;
+      courses.forEach(c => {
+        let pt = 0;
+        if (c.marks >= 90) pt = 10;
+        else if (c.marks >= 80) pt = 9;
+        else if (c.marks >= 70) pt = 8;
+        else if (c.marks >= 60) pt = 7;
+        else if (c.marks >= 50) pt = 6;
+        else if (c.marks >= 40) pt = 5;
+        totalPts += pt * c.credits;
+        totalCredits += c.credits;
+        totalMarks += c.marks;
+      });
+      const gpa = (totalPts / totalCredits).toFixed(2);
+      document.getElementById('grade-gpa').innerText = gpa;
+      document.getElementById('grade-avg').innerText = (totalMarks / courses.length).toFixed(1) + '%';
+      const tier = document.getElementById('grade-tier');
+      if (parseFloat(gpa) >= 8.5) {
+        tier.innerText = 'Distinction';
+        tier.className = 'text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 truncate';
+      } else if (parseFloat(gpa) >= 7.0) {
+        tier.innerText = 'First Class';
+        tier.className = 'text-xs font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200 truncate';
+      } else {
+        tier.innerText = 'Second Class';
+        tier.className = 'text-xs font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 truncate';
+      }
+    }
+    renderCourses();
+
+    // Contact Form
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('hidden');
+      showToast('Thank you! Your message has been sent.');
+    }
+    function resetContactForm() {
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-form').classList.remove('hidden');
+      document.getElementById('contact-success').classList.add('hidden');
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
